@@ -90,7 +90,7 @@ boxplot(EPI,BIODIVERSITY)
 qqplot(EPI,BIODIVERSITY)
 
 #------------------------------------------------------------------------------#
-EPILand<-EPI[Landlock]
+EPILand<-EPI[!Landlock]
 Eland <- EPILand[!is.na(EPILand)]
 fivenum(Eland,na.rm=TRUE)
 hist(Eland)
@@ -107,8 +107,11 @@ qqline(x)
 #------------------------------------------------------------------------------#
 EPI_data <- read.csv("PATH/2010EPI_data.csv")
 attach(EPI_data)  
-Country
-EPI_South_Asia <- GEO_subregion[!No_surface_water][High_Population_Density ==1]
-Eland <- EPI_South_Asia[!is.na(EPI_South_Asia)]
-#fivenum(Eland,na.rm=TRUE)
-Eland
+#Country
+EPI_South_Asia_G <- EPI[GEO_subregion == 'South Asia']
+EPI_South_Asia_E <- EPI[EPI_regions == 'South Asia']
+EPI_South_Asia <- union(EPI_South_Asia_E,EPI_South_Asia_G)
+EPI_South_Asia
+
+
+
