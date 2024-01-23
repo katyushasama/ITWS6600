@@ -107,7 +107,6 @@ qqline(x)
 #------------------------------------------------------------------------------#
 EPI_data <- read.csv("PATH/2010EPI_data.csv")
 attach(EPI_data)  
-#Country
 EPI_South_Asia_G <- EPI[GEO_subregion == 'South Asia']
 EPI_South_Asia_E <- EPI[EPI_regions == 'South Asia']
 EPI_South_Asia <- union(EPI_South_Asia_E,EPI_South_Asia_G)
