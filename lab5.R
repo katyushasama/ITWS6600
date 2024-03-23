@@ -29,5 +29,42 @@ library(dplyr)
 outliers = HittersData[name_of_influential,]
 Hitter_without_outliers = HittersData %>% anti_join(outliers)
 
-SalaryPredictModel2 = lm(Salary !. , data = Hitter_without_outliers)
+SalaryPredictModel2 = lm(Salary ~ . , data = Hitter_without_outliers)
 summary(SalaryPredictModel2)
+
+set.seed(10)
+
+data1 = rnorm(50)
+
+set.seed(30)
+
+data2 = rnorm(50)
+
+shapiro.test(data1)
+hist(data1,col = 'green')
+
+shapiro.test(data2)
+hist(data1,col = 'steelblue')
+
+set.seed(0)
+data = rnorm(100)
+
+shapiro.test(data)
+
+set.seed(0)
+data = rpois(n=100, lambda = 3)
+shapiro.test(data)
+hist(data,col='yellow')
+
+library(nortest)
+set.seed(1)
+
+x = rnorm(100,0,1)
+ad.test(x)
+
+set.seed(1)
+x = runif(100,0,1)
+ad.test(x)
+
+
+
